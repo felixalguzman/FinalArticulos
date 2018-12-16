@@ -44,7 +44,7 @@ public class ArticuloServices {
 
     public List<Articulo> paginacionDeArticulos(int offset, int limit) {
 
-        return articuloRepository.buscarArticulosPorPaginacion(limit, offset);
+        return articuloRepository.buscarArticulosPorPaginacion(offset, limit);
     }
 
     public List<Articulo> buscarArticulosPorCantidadDisponibleMayorQue(int cantidad) {
@@ -56,6 +56,11 @@ public class ArticuloServices {
 
         articulo.setCantidadDisponible(articulo.getCantidadDisponible() - cantidadMenos);
         articuloRepository.save(articulo);
+    }
+
+    public long contarArticulos() {
+        
+        return articuloRepository.count();
     }
 
 }

@@ -18,4 +18,5 @@ public interface ArticuloRepository extends JpaRepository<Articulo, Long> {
     @Query(value = "select * from Articulo a offset(:offset) limit(:limit)", nativeQuery = true)
     List<Articulo> buscarArticulosPorPaginacion(@Param("offset") int offset, @Param("limit") int limit);
 
+
 }

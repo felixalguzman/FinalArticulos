@@ -61,7 +61,7 @@ public class ArticuloController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/articulos/paginacion", method = RequestMethod.GET, params = {"limit", "offset"})
+    @RequestMapping(value = "/articulos/paginacion", method = RequestMethod.GET, params = {"limit", "offset"}, produces = {"application/json"})
     public List<Articulo> articulosPaginacion(@RequestParam("limit") int limit, @RequestParam("offset") int offset) {
 
         return articuloServices.paginacionDeArticulos(offset, limit);
@@ -71,6 +71,12 @@ public class ArticuloController {
     public Articulo buscarPorId(@PathVariable Long id) {
 
         return articuloServices.buscarPorId(id);
+    }
+
+    @GetMapping("/articulos/cantidad")
+    public int contarArticulos(){
+
+        return (int) articuloServices.contarArticulos();
     }
 
 
