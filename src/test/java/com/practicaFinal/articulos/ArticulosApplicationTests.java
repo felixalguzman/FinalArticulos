@@ -1,4 +1,4 @@
-package com.practicaFinal.articulos.final.articulos;
+package com.practicaFinal.articulos;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

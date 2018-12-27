@@ -39,7 +39,7 @@ public class ArticuloServices {
     }
 
     public List<Articulo> buscarArticulosPorNombre(String nombre) {
-        return articuloRepository.findAllByNombre(nombre);
+        return articuloRepository.findAllByNombreIgnoreCaseContaining(nombre);
     }
 
     public List<Articulo> paginacionDeArticulos(int offset, int limit) {
