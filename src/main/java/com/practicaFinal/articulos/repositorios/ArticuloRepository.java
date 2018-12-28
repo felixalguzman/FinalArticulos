@@ -12,10 +12,11 @@ import java.util.List;
 public interface ArticuloRepository extends JpaRepository<Articulo, Long> {
 
 
-    List<Articulo> findAllByNombre(String nombre);
+    List<Articulo> findAllByNombreIgnoreCaseContaining(String nombre);
     List<Articulo> findAllByCantidadDisponibleGreaterThanEqual(int cantidad);
 
     @Query(value = "select * from Articulo a offset(:offset) limit(:limit)", nativeQuery = true)
     List<Articulo> buscarArticulosPorPaginacion(@Param("offset") int offset, @Param("limit") int limit);
+
 
 }
