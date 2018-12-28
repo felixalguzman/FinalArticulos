@@ -48,12 +48,10 @@ public class ArticuloServices {
     }
 
     public List<Articulo> buscarArticulosPorCantidadDisponibleMayorQue(int cantidad) {
-
         return articuloRepository.findAllByCantidadDisponibleGreaterThanEqual(cantidad);
     }
 
     public void restarCantidadArticulo(Articulo articulo, int cantidadMenos) {
-
         articulo.setCantidadDisponible(articulo.getCantidadDisponible() - cantidadMenos);
         articuloRepository.save(articulo);
     }
