@@ -20,6 +20,6 @@ public interface ArticuloRepository extends JpaRepository<Articulo, Long> {
 
 
 
-    
+
 
 }

@@ -1,17 +1,15 @@
 package com.practicaFinal.articulos.servicios;
 
+import java.util.List;
+import java.util.Optional;
+
 import com.practicaFinal.articulos.entidades.Articulo;
 import com.practicaFinal.articulos.repositorios.ArticuloPaginacionRepository;
 import com.practicaFinal.articulos.repositorios.ArticuloRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ArticuloServices {
@@ -21,7 +19,6 @@ public class ArticuloServices {
 
     @Autowired
     private ArticuloPaginacionRepository articuloPaginacionRepository;
-
 
     public void crearArticulo(Articulo articulo) {
 
