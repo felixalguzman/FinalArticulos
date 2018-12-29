@@ -19,4 +19,7 @@ public interface ArticuloRepository extends JpaRepository<Articulo, Long> {
     List<Articulo> buscarArticulosPorPaginacion(@Param("offset") int offset, @Param("limit") int limit);
 
 
+
+    
+
 }
