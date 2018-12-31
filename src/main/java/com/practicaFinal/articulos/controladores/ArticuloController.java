@@ -37,7 +37,7 @@ public class ArticuloController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/articulos", method = RequestMethod.PUT, consumes = {"application/json"})
+    @RequestMapping(value = "/articulos", method = RequestMethod.PUT)
     public ResponseEntity<Articulo> actualizarArticulo(@RequestBody Articulo articulo) {
 
         articuloServices.crearArticulo(articulo);
