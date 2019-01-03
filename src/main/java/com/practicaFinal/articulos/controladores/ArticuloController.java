@@ -3,6 +3,8 @@ package com.practicaFinal.articulos.controladores;
 import com.practicaFinal.articulos.entidades.Articulo;
 import com.practicaFinal.articulos.servicios.ArticuloServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,7 +37,7 @@ public class ArticuloController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/articulos", method = RequestMethod.PUT, consumes = {"application/json"})
+    @RequestMapping(value = "/articulos", method = RequestMethod.PUT)
     public ResponseEntity<Articulo> actualizarArticulo(@RequestBody Articulo articulo) {
 
         articuloServices.crearArticulo(articulo);
@@ -64,7 +66,8 @@ public class ArticuloController {
     @RequestMapping(value = "/articulos/paginacion", method = RequestMethod.GET, params = {"limit", "offset"}, produces = {"application/json"})
     public List<Articulo> articulosPaginacion(@RequestParam("limit") int limit, @RequestParam("offset") int offset) {
 
-        return articuloServices.paginacionDeArticulos(offset, limit);
+        Pageable pageable = PageRequest.of(offset, limit);
+        return articuloServices.paginacionDeArticulos(pageable);
     }
 
     @GetMapping("/articulos/{id}")

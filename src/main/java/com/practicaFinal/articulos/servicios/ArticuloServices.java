@@ -1,12 +1,15 @@
 package com.practicaFinal.articulos.servicios;
 
-import com.practicaFinal.articulos.entidades.Articulo;
-import com.practicaFinal.articulos.repositorios.ArticuloRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
+
+import com.practicaFinal.articulos.entidades.Articulo;
+import com.practicaFinal.articulos.repositorios.ArticuloPaginacionRepository;
+import com.practicaFinal.articulos.repositorios.ArticuloRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 @Service
 public class ArticuloServices {
@@ -14,6 +17,8 @@ public class ArticuloServices {
     @Autowired
     ArticuloRepository articuloRepository;
 
+    @Autowired
+    private ArticuloPaginacionRepository articuloPaginacionRepository;
 
     public void crearArticulo(Articulo articulo) {
 
@@ -42,9 +47,9 @@ public class ArticuloServices {
         return articuloRepository.findAllByNombreIgnoreCaseContaining(nombre);
     }
 
-    public List<Articulo> paginacionDeArticulos(int offset, int limit) {
+    public List<Articulo> paginacionDeArticulos(Pageable page) {
 
-        return articuloRepository.buscarArticulosPorPaginacion(offset, limit);
+        return articuloPaginacionRepository.findAll(page).getContent();
     }
 
     public List<Articulo> buscarArticulosPorCantidadDisponibleMayorQue(int cantidad) {
@@ -57,7 +62,7 @@ public class ArticuloServices {
     }
 
     public long contarArticulos() {
-        
+
         return articuloRepository.count();
     }
 
