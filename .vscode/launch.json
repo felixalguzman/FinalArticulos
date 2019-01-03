@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Articulos",
+            "request": "launch",
+            "mainClass": "com.practicaFinal.articulos.ArticulosApplication",
+            "projectName": "articulos"
+        }
+    ]
+}

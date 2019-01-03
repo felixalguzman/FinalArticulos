@@ -56,6 +56,7 @@ public class ArticuloController {
     @RequestMapping(value = "/articulos/comprar", method = RequestMethod.PUT, params = {"id", "cantidad"})
     public ResponseEntity<Articulo> comprarArticulos(@RequestParam("id") Long id, @RequestParam("cantidad") int cantidad) {
 
+        
         Articulo articulo = articuloServices.buscarPorId(id);
 
         articuloServices.restarCantidadArticulo(articulo, cantidad);
